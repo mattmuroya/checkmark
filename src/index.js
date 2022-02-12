@@ -7,17 +7,24 @@ const closeMenuBtn = document.getElementById('close-menu-btn');
 const shade = document.getElementById('shade');
 
 menuBtn.addEventListener('click', () => {
-  sidebar.classList.toggle('-translate-x-full');
-  shade.classList.toggle('hidden');
+  toggleSidebar();
 });
 
 closeMenuBtn.addEventListener('click', () => {
-  sidebar.classList.toggle('-translate-x-full');
-  shade.classList.toggle('hidden');
+  toggleSidebar();
 });
 
 shade.addEventListener('click', () => {
+  toggleSidebar();
+});
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth >= 768 && !shade.classList.contains('hidden')) {
+    toggleSidebar();
+  }
+});
+
+const toggleSidebar = () => {
   sidebar.classList.toggle('-translate-x-full');
   shade.classList.toggle('hidden');
-});
-                                                         
+};
