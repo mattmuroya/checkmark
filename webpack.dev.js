@@ -5,6 +5,7 @@ module.exports = {
   entry: './src/index.js',
   output: {
     filename: 'main.js',
+    assetModuleFilename: './[name][ext]',
     path: path.resolve(__dirname, 'dist'),
   },
   mode: 'development',
@@ -30,6 +31,10 @@ module.exports = {
           // postcss
           'postcss-loader',
         ],
+      },
+      {
+        test: /\.ico$/i,
+        type: 'asset/resource',
       },
     ],
   },

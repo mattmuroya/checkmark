@@ -6,7 +6,7 @@ module.exports = {
   entry: './src/index.js',
   output: {
     filename: 'main.js',
-    assetModuleFilename: './img/[name][ext]',
+    assetModuleFilename: './[name][ext]',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
   },
