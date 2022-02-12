@@ -1,1 +1,1 @@
-(()=>{"use strict";const e=document.getElementById("content");e.addEventListener("click",(()=>{e.classList.toggle("bg-green-400"),console.log("test")}))})();
+(()=>{"use strict";const e=document.getElementById("menu-btn"),t=document.getElementById("sidebar");e.addEventListener("click",(()=>{t.classList.toggle("-translate-x-full")})),document.getElementById("close-menu-btn").addEventListener("click",(()=>{t.classList.toggle("-translate-x-full")}))})();
