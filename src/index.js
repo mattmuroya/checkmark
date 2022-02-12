@@ -1,7 +1,13 @@
 import './style.css';
 
-const content = document.getElementById('content');
-content.addEventListener('click', () => {
-  content.classList.toggle('bg-green-400');
-  console.log('test');
+const menuBtn = document.getElementById('menu-btn');
+const sidebar = document.getElementById('sidebar');
+
+menuBtn.addEventListener('click', () => {
+  sidebar.classList.toggle('-translate-x-full');
+});
+
+const closeMenuBtn = document.getElementById('close-menu-btn');
+closeMenuBtn.addEventListener('click', () => {
+  sidebar.classList.toggle('-translate-x-full');
 });
