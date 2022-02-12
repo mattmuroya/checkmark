@@ -1,0 +1,1 @@
+(()=>{"use strict";const e=document.getElementById("content");e.addEventListener("click",(()=>{e.classList.toggle("bg-green-400"),console.log("test")}))})();
