@@ -1,4 +1,5 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
@@ -6,6 +7,7 @@ module.exports = {
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
+    clean: true,
   },
   mode: 'production',
   devServer: {
@@ -13,6 +15,9 @@ module.exports = {
     open: true,
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/template.html',
+    }),
     new MiniCssExtractPlugin({
       filename: 'main.css',
     }),
@@ -20,7 +25,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/i, // check for any css or scss files
+        test: /\.css$/i, // check for any css
         use: [
           // Extracts CSS from the JS into separate files
           MiniCssExtractPlugin.loader,
