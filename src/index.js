@@ -28,3 +28,9 @@ const toggleSidebar = () => {
   sidebar.classList.toggle('-translate-x-full');
   shade.classList.toggle('hidden');
 };
+
+const menu = document.getElementById('2');
+const btn = document.getElementById('1');
+btn.addEventListener('click', () => {
+  menu.classList.toggle('scale-0');
+});
