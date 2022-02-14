@@ -32,6 +32,7 @@ const tasks = (() => {
   return {
     taskList,
     addNewTask,
+    deleteTask
   }
 })();
 
