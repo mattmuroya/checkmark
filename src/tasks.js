@@ -5,6 +5,16 @@ const tasks = (() => {
   function createTask(title, details, dueDate, starred, tags) {
     let completed = false;
     let modifiedDate = new Date();
+    const getDueDateString = () => {
+      if (dueDate === '') {
+        console.log('non');
+        return 'None';
+      }
+      else {
+        console.log(dueDate);
+        return format(dueDate, 'P');
+      }
+    };
     const getModifiedDateString = () => format(modifiedDate, 'Pp');
     return {
       title,
@@ -14,7 +24,8 @@ const tasks = (() => {
       starred,
       tags,
       completed,
-      getModifiedDateString
+      getDueDateString,
+      getModifiedDateString,
     }
   }
   
@@ -28,11 +39,17 @@ const tasks = (() => {
     taskList.splice(index, 1);
   }
 
+  function toggleStarred(index) {
+    taskList[index].starred = !taskList[index].starred;
+  }
+
+
   // module items to return
   return {
     taskList,
     addNewTask,
-    deleteTask
+    deleteTask,
+    toggleStarred,
   }
 })();
 
