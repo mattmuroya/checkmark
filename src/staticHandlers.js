@@ -111,7 +111,7 @@ const staticHandlers = (() => {
   
       currentTask.title = titleField.value;
       currentTask.details = detailsField.value;
-      currentTask.dueDate = new Date(dueDateField.value);
+      currentTask.dueDate = dueDateField.value;
       currentTask.modifiedDate = new Date();
   
       toggleModal();
