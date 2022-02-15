@@ -3,29 +3,36 @@ import { format } from "date-fns";
 const tasks = (() => {
   
   function createTask(title, details, dueDate, starred, tags) {
+
+    let taskTitle = title,
+        taskDetails = details,
+        taskDueDate = dueDate,
+        taskStarred = starred,
+        taskTags = tags;
+
     let completed = false;
-    let modifiedDate = new Date();
-    const getDueDateString = () => {
-      if (dueDate === '') {
-        console.log('non');
-        return 'None';
-      }
-      else {
-        console.log(dueDate);
-        return format(dueDate, 'P');
-      }
-    };
-    const getModifiedDateString = () => format(modifiedDate, 'Pp');
+    let taskModifiedDate = new Date();
+
     return {
-      title,
-      details,
-      dueDate,
-      modifiedDate,
-      starred,
-      tags,
-      completed,
-      getDueDateString,
-      getModifiedDateString,
+      get title() {
+        return taskTitle;
+      },
+      get details() {
+        return taskDetails;
+      },
+      get dueDateString() {
+        if (taskDueDate === '') return 'None';
+        return format(taskDueDate, 'P');
+      },
+      get modifiedDateString() {
+        return format(taskModifiedDate, 'Pp');
+      },
+      get isStarred() {
+        return taskStarred; // returns boolean
+      },
+      toggleStarred() {
+        taskStarred = !taskStarred;
+      }
     }
   }
   
@@ -39,17 +46,11 @@ const tasks = (() => {
     taskList.splice(index, 1);
   }
 
-  function toggleStarred(index) {
-    taskList[index].starred = !taskList[index].starred;
-  }
-
-
   // module items to return
   return {
     taskList,
     addNewTask,
     deleteTask,
-    toggleStarred,
   }
 })();
 

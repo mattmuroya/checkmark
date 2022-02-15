@@ -1,4 +1,3 @@
-import { startOfDay } from 'date-fns';
 import tasks from './tasks';
 
 const domHandlers = (() => {
@@ -87,15 +86,15 @@ const domHandlers = (() => {
 
       let details = document.createTextNode(task.details);
       let title = document.createTextNode(task.title);
-      let dueDate = document.createTextNode('Due Date: ' + task.getDueDateString());
-      let modifiedDate = document.createTextNode('Last Modified: ' + task.getModifiedDateString());
+      let dueDate = document.createTextNode('Due Date: ' + task.dueDateString);
+      let modifiedDate = document.createTextNode('Last Modified: ' + task.modifiedDateString);
 
       document.getElementById(`task-details-${i}`).appendChild(details);
       document.getElementById(`task-title-${i}`).appendChild(title);
       document.getElementById(`task-due-date-${i}`).appendChild(dueDate);
       document.getElementById(`task-mod-date-${i}`).appendChild(modifiedDate);
       
-      if (task.starred) {
+      if (task.isStarred) {
         changeStarColor(document.getElementById(`star-icon-${i}`));
       }
 
@@ -105,13 +104,12 @@ const domHandlers = (() => {
       });
       
       document.getElementById(`star-task-btn-${i}`).addEventListener('click', () => {
-        tasks.toggleStarred(i);
+        // tasks.toggleStarred(i);
+        task.toggleStarred();
         changeStarColor(document.getElementById(`star-icon-${i}`));
       });
       
     });
-    // activateReadStatusBtns();
-    // activateDeleteBtns();
   }
 
   function clearTaskWindow() {
@@ -123,7 +121,6 @@ const domHandlers = (() => {
 
   function changeStarColor(star) {
     if (star.style.fill === 'none') {
-      console.log('fill is none');
       star.style.fill = '#34d399';
       star.style.stroke = '#34d399';
     } else {
@@ -168,8 +165,6 @@ const domHandlers = (() => {
 
   return {
     redrawTasks,
-    detailsField,
-    clearForm
   }
 
 })();
