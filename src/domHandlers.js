@@ -29,7 +29,6 @@ const domHandlers = (() => {
   const newTaskBtn = document.getElementById('new-task-btn');
   const closeModalBtn = document.getElementById('close-modal-btn');
   const modal = document.getElementById('modal');
-  const submitBtn = document.getElementById('submit-btn');
   const taskWindow = document.getElementById('task-window');
 
   const titleField = document.getElementById('title');
@@ -39,13 +38,6 @@ const domHandlers = (() => {
 
   function toggleModal() {
     modal.classList.toggle('hidden');
-  }
-
-  function clearForm() {
-    titleField.value = null;
-    detailsField.value = null;
-    dueDateField.value = null;
-    starredField.checked = false;
   }
 
   function redrawTasks() {
@@ -134,23 +126,27 @@ const domHandlers = (() => {
   newTaskBtn.addEventListener('click', toggleModal);
   closeModalBtn.addEventListener('click', () => {
     toggleModal();
-    clearForm();
+    form.reset();
   });
   modal.addEventListener('click', (e) => {
     if (e.target.id === 'modal') { // id='modal' is the overlay, not the form itself
       toggleModal();
-      clearForm();
+      form.reset();
     }
   });
   window.addEventListener('keydown', (e) => {
     if (!modal.classList.contains('hidden')) {
       if (e.key === 'Escape') {
         toggleModal();
-        clearForm();
+        form.reset();
       }
     }
   });
-  submitBtn.addEventListener('click', () => {
+
+  const form = document.getElementById('form');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
     let titleValue = titleField.value,
         detailsValue = detailsField.value,
         dueDateValue = dueDateField.value === '' ?
@@ -159,7 +155,7 @@ const domHandlers = (() => {
         starredValue = starredField.checked;
     tasks.addNewTask(titleValue, detailsValue, dueDateValue, starredValue);
     toggleModal();
-    clearForm();
+    form.reset();
     redrawTasks();
   });
 
