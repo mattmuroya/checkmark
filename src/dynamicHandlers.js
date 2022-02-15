@@ -1,4 +1,5 @@
 import tasks from './tasks';
+import staticHandlers from './staticHandlers';
 
 const dynamicHandlers = (() => {
 
@@ -67,6 +68,10 @@ const dynamicHandlers = (() => {
     document.getElementById(`delete-task-btn-${i}`).addEventListener('click', () => {
       tasks.deleteTask(i);
       redrawTasks();
+    });
+
+    document.getElementById(`edit-task-btn-${i}`).addEventListener('click', () => {
+      staticHandlers.activateEditMode(task);
     });
     
     document.getElementById(`star-task-btn-${i}`).addEventListener('click', () => {

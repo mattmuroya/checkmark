@@ -14,21 +14,42 @@ const tasks = (() => {
     let taskModifiedDate = new Date();
 
     return {
+      // getters/accessors
       get title() {
         return taskTitle;
       },
       get details() {
         return taskDetails;
       },
+      get dueDate() {
+        return taskDueDate;
+      },
       get dueDateString() {
         if (taskDueDate === '') return 'None';
-        return format(taskDueDate, 'P');
+        // return format(taskDueDate, 'P');
+        return taskDueDate.toLocaleDateString();
       },
+      // get dueDateYMD() {
+      //   return format(taskDueDate, 'yyyy-MM-dd');
+      // },
       get modifiedDateString() {
         return format(taskModifiedDate, 'Pp');
       },
       get isStarred() {
-        return taskStarred; // returns boolean
+        return taskStarred; // boolean
+      },
+      // setters/mutators
+      set title(value) {
+        taskTitle = value;
+      },
+      set details(value) {
+        taskDetails = value;
+      },
+      set dueDate(value) {
+        taskDueDate = value;
+      },
+      set modifiedDate(value) {
+        taskModifiedDate = value;
       },
       toggleStarred() {
         taskStarred = !taskStarred;
