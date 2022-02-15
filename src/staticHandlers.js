@@ -101,7 +101,7 @@ const staticHandlers = (() => {
 
     titleField.value = currentTask.title;
     detailsField.value = currentTask.details;
-    // dueDateField.value = currentTask.dueDateYMD;
+    dueDateField.value = currentTask.dueDateYYYYMMDD;
     starredField.checked = currentTask.isStarred;
 
     form.addEventListener('submit', submitEdits, {once:true});

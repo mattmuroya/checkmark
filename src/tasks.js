@@ -26,12 +26,16 @@ const tasks = (() => {
       },
       get dueDateString() {
         if (taskDueDate === '') return 'None';
-        // return format(taskDueDate, 'P');
-        return taskDueDate.toLocaleDateString();
+        let date = new Date(taskDueDate);
+        let offset = date.getTimezoneOffset() * 60 * 1000;
+        return format(date.valueOf() + offset, 'P');
       },
-      // get dueDateYMD() {
-      //   return format(taskDueDate, 'yyyy-MM-dd');
-      // },
+      get dueDateYYYYMMDD() {
+        if (taskDueDate === '') return '';
+        let date = new Date(taskDueDate);
+        let offset = date.getTimezoneOffset() * 60 * 1000;
+        return format(date.valueOf() + offset, 'yyyy-MM-dd');
+      },
       get modifiedDateString() {
         return format(taskModifiedDate, 'Pp');
       },

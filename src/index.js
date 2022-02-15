@@ -12,7 +12,7 @@ import dynamicHandlers from './dynamicHandlers';
 tasks.addNewTask(
     'Sample Task',
     'This is a sample task item description.',
-    new Date(), 
+    '', 
     false);
 
 dynamicHandlers.redrawTasks();
