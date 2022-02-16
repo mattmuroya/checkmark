@@ -64,6 +64,7 @@ const staticHandlers = (() => {
         starredValue = starredField.checked;
     tasks.addNewTask(titleValue, detailsValue, dueDateValue, starredValue);
     toggleModal();
+    navHandlers.tasksToDisplay = navHandlers.determineTasksToDisplay(document.querySelector('[data-state="active"]'));
     dynamicHandlers.redrawTasks(navHandlers.tasksToDisplay);
   }
 
@@ -95,6 +96,7 @@ const staticHandlers = (() => {
       currentTask.modifiedDate = new Date();
   
       toggleModal();
+      navHandlers.tasksToDisplay = navHandlers.determineTasksToDisplay(document.querySelector('[data-state="active"]'));
       dynamicHandlers.redrawTasks(navHandlers.tasksToDisplay);
     }
 

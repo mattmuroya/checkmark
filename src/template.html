@@ -48,7 +48,7 @@
       <nav>
         <ul class="mb-4">
           <li>
-            <button id="nav-all" class="nav-item">
+            <button id="nav-all" class="nav-item bg-emerald-400 text-white" data-state="active">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
               </svg>
@@ -60,7 +60,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <span>Today</span>
+              <span>Due Today</span>
             </button>
           </li>
           <li>
@@ -68,7 +68,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
-              <span>Upcoming</span>
+              <span>Next 7 Days</span>
             </button>
           </li>
           <li>
@@ -114,14 +114,19 @@
     <!-- content -->
     <div class="flex-1 md:ml-72">
       <div class="z-10 px-4 md:px-10 sticky top-0 bg-white">
-        <div class="flex items-center justify-between py-4 md:py-10 border-b-2 border-gray-100">
-          <div class="font-bold text-3xl">All Items</div>
-          <button id="new-task-btn" class="flex items-center p-3 md:p-2 md:pr-3 bg-emerald-400 rounded-full md:rounded text-white hover:bg-emerald-500 transition">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-            </svg>
-            <span class="ml-2 hidden md:inline">New Task</span>
-          </button>
+        <div class="py-4 md:py-10 border-b-2 border-gray-100">
+          <div class="flex items-start justify-between">
+            <div class="flex">
+              <div id="page-header" class="font-bold text-3xl">All Items</div>
+              <div id="page-subheader" class="font-light text-3xl ml-3 text-gray-300">Nothing is impossible.</div>
+            </div>
+            <button id="new-task-btn" class="flex items-center flex-shrink-0 p-3 md:p-2 md:pr-3 bg-emerald-400 rounded-full md:rounded text-white hover:bg-emerald-500 transition">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+              </svg>
+              <span class="ml-2 hidden md:inline">New Task</span>
+            </button>
+          </div>
         </div>
       </div>
       <div id="task-window" class="px-4 md:px-10">

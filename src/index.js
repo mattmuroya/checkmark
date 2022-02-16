@@ -15,51 +15,51 @@ tasks.addNewTask(
     'This is a sample task item description.',
     '2022-02-14', 
     false);
-    tasks.addNewTask(
-        '1',
-        'This is a sample task item description.',
-        '2022-02-15', 
-        false);
-        tasks.addNewTask(
-            '2',
-            'This is a sample task item description.',
-            '2022-02-16', 
-            false);
-            tasks.addNewTask(
-                '3',
-                'This is a sample task item description.',
-                '2022-02-17', 
-                false);
-                tasks.addNewTask(
-                    '4',
-                    'This is a sample task item description.',
-                    '2022-02-18', 
-                    false);
-                    tasks.addNewTask(
-                        '5',
-                        'This is a sample task item description.',
-                        '2022-02-19', 
-                        false);
-                        tasks.addNewTask(
-                            '6',
-                            'This is a sample task item description.',
-                            '2022-02-20', 
-                            false);
-                            tasks.addNewTask(
-                                '7',
-                                'This is a sample task item description.',
-                                '2022-02-21', 
-                                false);
-                                tasks.addNewTask(
-                                    '8',
-                                    'This is a sample task item description.',
-                                    '2022-02-22', 
-                                    false);
-                                    tasks.addNewTask(
-                                        '9',
-                                        'This is a sample task item description.',
-                                        '2022-02-23', 
-                                        false);
+tasks.addNewTask(
+    '1',
+    'This is a sample task item description.',
+    '2022-02-15', 
+    false);
+tasks.addNewTask(
+    '2',
+    'This is a sample task item description.',
+    '2022-02-16', 
+    false);
+tasks.addNewTask(
+    '3',
+    'This is a sample task item description.',
+    '2022-02-17', 
+    false);
+tasks.addNewTask(
+    '4',
+    'This is a sample task item description.',
+    '2022-02-18', 
+    false);
+tasks.addNewTask(
+    '5',
+    'This is a sample task item description.',
+    '2022-02-19', 
+    false);
+tasks.addNewTask(
+    '6',
+    'This is a sample task item description.',
+    '2022-02-20', 
+    false);
+tasks.addNewTask(
+    '7',
+    'This is a sample task item description.',
+    '2022-02-21', 
+    false);
+tasks.addNewTask(
+    '8',
+    'This is a sample task item description.',
+    '2022-02-22', 
+    false);
+tasks.addNewTask(
+    '9',
+    'This is a sample task item description.',
+    '2022-02-23', 
+    false);
 
 dynamicHandlers.redrawTasks(navHandlers.tasksToDisplay);
 
