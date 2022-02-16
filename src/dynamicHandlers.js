@@ -1,13 +1,14 @@
 import tasks from './tasks';
 import staticHandlers from './staticHandlers';
+import navHandlers from './navHandlers';
 
 const dynamicHandlers = (() => {
 
   const taskWindow = document.getElementById('task-window');
 
-  function redrawTasks() {
+  function redrawTasks(list) {
     clearTaskWindow();
-    tasks.taskList.forEach(createTaskMarkup);
+    list.forEach(createTaskMarkup);
   }
 
   function clearTaskWindow() {
@@ -67,7 +68,7 @@ const dynamicHandlers = (() => {
 
     document.getElementById(`delete-task-btn-${i}`).addEventListener('click', () => {
       tasks.deleteTask(i);
-      redrawTasks();
+      redrawTasks(navHandlers.tasksToDisplay);
     });
 
     document.getElementById(`edit-task-btn-${i}`).addEventListener('click', () => {

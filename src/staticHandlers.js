@@ -1,29 +1,8 @@
 import dynamicHandlers from "./dynamicHandlers";
+import navHandlers from "./navHandlers";
 import tasks from "./tasks";
 
 const staticHandlers = (() => {
-
-  // responsive menu behavior
-
-  const menuBtn = document.getElementById('menu-btn');
-  const sidebar = document.getElementById('sidebar');
-  const closeMenuBtn = document.getElementById('close-menu-btn');
-  const shade = document.getElementById('shade');
-
-  function toggleSidebar() {
-    sidebar.classList.toggle('-translate-x-full');
-    shade.classList.toggle('hidden');
-  };
-
-  menuBtn.addEventListener('click', toggleSidebar);
-  closeMenuBtn.addEventListener('click', toggleSidebar);
-  shade.addEventListener('click', toggleSidebar);
-
-  window.addEventListener('resize', () => {
-    if (window.innerWidth >= 768 && !shade.classList.contains('hidden')) {
-      toggleSidebar();
-    }
-  });
 
   // static button event listeners
 
@@ -85,7 +64,7 @@ const staticHandlers = (() => {
         starredValue = starredField.checked;
     tasks.addNewTask(titleValue, detailsValue, dueDateValue, starredValue);
     toggleModal();
-    dynamicHandlers.redrawTasks();
+    dynamicHandlers.redrawTasks(navHandlers.tasksToDisplay);
   }
 
   // handle task editing
@@ -112,10 +91,11 @@ const staticHandlers = (() => {
       currentTask.title = titleField.value;
       currentTask.details = detailsField.value;
       currentTask.dueDate = dueDateField.value;
+      currentTask.isStarred = starredField.checked;
       currentTask.modifiedDate = new Date();
   
       toggleModal();
-      dynamicHandlers.redrawTasks();
+      dynamicHandlers.redrawTasks(navHandlers.tasksToDisplay);
     }
 
     // need additional listeners to remove submitEdits handler from within function scope

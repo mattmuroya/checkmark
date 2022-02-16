@@ -55,6 +55,9 @@ const tasks = (() => {
       set modifiedDate(value) {
         taskModifiedDate = value;
       },
+      set isStarred(value) {
+        taskStarred = value;
+      },
       toggleStarred() {
         taskStarred = !taskStarred;
       }
