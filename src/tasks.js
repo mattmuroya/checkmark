@@ -30,8 +30,15 @@ const tasks = (() => {
         let offset = date.getTimezoneOffset() * 60 * 1000;
         return format(date.valueOf() + offset, 'P');
       },
+      get dueDateParsed() {
+        if (taskDueDate === '') return 8640000000000000; // maximum date integer
+        return Date.parse(taskDueDate);
+      },
       get modifiedDateString() {
         return format(taskModifiedDate, 'Pp');
+      },
+      get modifiedDateParsed() {
+        return taskModifiedDate;
       },
       get isStarred() {
         return taskStarred; // boolean

@@ -29,7 +29,7 @@ const navHandlers = (() => {
 
    let tasksToDisplay = tasks.taskList;
    const pageHeader = document.getElementById('page-header');
-   const pageSubheader = document.getElementById('page-subheader');
+  //  const pageSubheader = document.getElementById('page-subheader');
 
    const activateNavItems = (() => {
      let navItems = document.querySelectorAll('.nav-item');
@@ -58,15 +58,15 @@ const navHandlers = (() => {
    function determineTasksToDisplay(nav) {
     if (nav.id === 'nav-all') {
       pageHeader.textContent = 'All Items';
-      pageSubheader.textContent = 'Nothing is impossible.';
+      // pageSubheader.textContent = 'Nothing is impossible.';
       return tasks.taskList;
     } else if (nav.id === 'nav-starred') {
       pageHeader.textContent = 'Starred';
-      pageSubheader.textContent = `Don't let your dreams be dreams.`;
+      // pageSubheader.textContent = `Don't let your dreams be dreams.`;
       return tasks.taskList.filter(taskItem => taskItem.isStarred); // implicit return
     } else if (nav.id === 'nav-today') {
       pageHeader.textContent = 'Due Today';
-      pageSubheader.textContent = 'Yesterday, you said "tomorrow."';
+      // pageSubheader.textContent = 'Yesterday, you said "tomorrow."';
       return tasks.taskList.filter(taskItem => {
         let date = Date.parse(taskItem.dueDateString),
             today = Date.parse(format(new Date(), 'P'));
@@ -74,7 +74,7 @@ const navHandlers = (() => {
       });
     } else if (nav.id === 'nav-upcoming') {
       pageHeader.textContent = 'Next 7 Days';
-      pageSubheader.textContent = 'What are you waiting for?';
+      // pageSubheader.textContent = 'What are you waiting for?';
       return tasks.taskList.filter(taskItem => {
         let date = Date.parse(taskItem.dueDateString),
             today = Date.parse(format(new Date(), 'P')),
@@ -84,7 +84,7 @@ const navHandlers = (() => {
     }
     else if (nav.id === 'nav-overdue') {
       pageHeader.textContent = 'Overdue';
-      pageSubheader.textContent = 'JUST DO IT.';
+      // pageSubheader.textContent = 'JUST DO IT.';
       return tasks.taskList.filter(taskItem => {
         let date = Date.parse(taskItem.dueDateString),
             today = Date.parse(format(new Date(), 'P'));

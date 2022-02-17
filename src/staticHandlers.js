@@ -46,6 +46,79 @@ const staticHandlers = (() => {
     }
   });
 
+  // update tasks to display
+  function updateTasksToDisplay() {
+    navHandlers.tasksToDisplay = navHandlers.determineTasksToDisplay(document.querySelector('[data-state="active"]'));
+    dynamicHandlers.redrawTasks(navHandlers.tasksToDisplay);
+  }
+
+  // sorting features
+
+  const reverseBtn = document.getElementById('reverse-btn');
+  reverseBtn.addEventListener('click',() => {
+    tasks.taskList.reverse();
+    updateTasksToDisplay();
+  });
+  
+  const sortDropdown = document.getElementById('sort-dropdown');
+
+  sortDropdown.addEventListener('change', (e) => { // sort tasklist and then call display update
+      switch(e.target.value) {
+          case 'title':
+            sortByTitle(tasks.taskList);
+            break;
+          case 'due':
+            sortByDueDate(tasks.taskList);
+            break;
+          case 'modified':
+            sortByLastModified(tasks.taskList);
+            break;
+          case 'completed':
+            // sortByTitle(myLibrary);
+            break;
+        }
+        updateTasksToDisplay();
+        sortDropdown.selectedIndex = 0;
+        // redrawBooks();
+      });
+      
+      function sortByTitle(list) {
+        list.sort((a, b) => a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1);
+      }
+      
+      function sortByDueDate(list) {
+        list.sort((a, b) => {
+          if (a.dueDateParsed > b.dueDateParsed) {
+            return 1;
+          } else if (b.dueDateParsed > a.dueDateParsed) {
+            return -1;
+          } else { // if equal, sort by title
+            if (a.title.toLowerCase() > b.title.toLowerCase()) {
+              return 1;
+            } else {
+              return -1;
+            }
+          }
+        });
+      }
+
+      function sortByLastModified(list) {
+        list.sort((a, b) => {
+          if (a.modifiedDateParsed > b.modifiedDateParsed) {
+            return -1;
+          } else if (b.modifiedDateParsed > a.modifiedDateParsed) {
+            return 1;
+          } else { // if equal, sort by title
+            if (a.title.toLowerCase() > b.title.toLowerCase()) {
+              return 1;
+            } else {
+              return -1;
+            }
+          }
+        });
+      }
+      
+
   // handle new submissions
 
   const form = document.getElementById('form');
@@ -62,8 +135,7 @@ const staticHandlers = (() => {
         starredValue = starredField.checked;
     tasks.addNewTask(titleValue, detailsValue, dueDateValue, starredValue);
     toggleModal();
-    navHandlers.tasksToDisplay = navHandlers.determineTasksToDisplay(document.querySelector('[data-state="active"]'));
-    dynamicHandlers.redrawTasks(navHandlers.tasksToDisplay);
+    updateTasksToDisplay();
   }
 
   // handle task editing
@@ -94,8 +166,7 @@ const staticHandlers = (() => {
       currentTask.modifiedDate = new Date();
   
       toggleModal();
-      navHandlers.tasksToDisplay = navHandlers.determineTasksToDisplay(document.querySelector('[data-state="active"]'));
-      dynamicHandlers.redrawTasks(navHandlers.tasksToDisplay);
+      updateTasksToDisplay();
     }
 
     // need additional listeners to remove submitEdits handler from within function scope
