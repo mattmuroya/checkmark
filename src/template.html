@@ -14,17 +14,24 @@
   <div class="relative min-h-screen md:flex">    
 
     <!-- top bar -->
-    <div class="md:hidden flex items-center bg-emerald-400 p-4 text-white text-lg font-bold">
+    <div class="md:hidden flex justify-between bg-emerald-400 p-4 text-white text-lg font-bold">
+      <div class="flex items-center">
+        <!-- menu button -->
+        <span id="menu-btn" class="block cursor-pointer mr-4 justify-self-start transition md:hidden">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </span>
 
-      <!-- menu button -->
-      <span id="menu-btn" class="block cursor-pointer mr-4 justify-self-start transition md:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        <!-- logo -->
+        <h1 class="block justify-self-center">DO IT</h1>
+      </div>
+      <button id="new-task-btn-mobile" class="flex items-center p-1 pr-2 rounded border-white border-2 text-white hover:bg-white hover:text-emerald-400 text-sm transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
         </svg>
-      </span>
-
-      <!-- logo -->
-      <h1 class="block justify-self-center">DO IT</h1>
+        <span class="ml-2">New Task</span>
+      </button>
     </div>
 
     <div id="shade" class="z-20 absolute top-0 h-full w-full bg-black opacity-60 hidden md:hidden"></div>
@@ -131,11 +138,11 @@
               </span>
               <!-- <div id="page-subheader" class="font-light text-3xl ml-3 text-gray-300">Nothing is impossible.</div> -->
             </div>
-            <button id="new-task-btn" class="flex items-center shrink-0 p-3 md:p-2 md:pr-3 bg-emerald-400 rounded-full md:rounded text-white hover:bg-emerald-500 transition">
+            <button id="new-task-btn" class="hidden md:flex items-center shrink-0 p-2 pr-3 bg-emerald-400 rounded text-white hover:bg-emerald-500 transition">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
               </svg>
-              <span class="ml-2 hidden md:inline">New Task</span>
+              <span class="ml-2 ">New Task</span>
             </button>
           </div>
         </div>

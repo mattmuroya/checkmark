@@ -7,6 +7,7 @@ const staticHandlers = (() => {
   // static button event listeners
 
   const newTaskBtn = document.getElementById('new-task-btn');
+  const newTaskBtnMobile = document.getElementById('new-task-btn-mobile');
   const modal = document.getElementById('modal');
   const closeModalBtn = document.getElementById('close-modal-btn');
 
@@ -27,6 +28,7 @@ const staticHandlers = (() => {
   }
 
   newTaskBtn.addEventListener('click', toggleModal);
+  newTaskBtnMobile.addEventListener('click', toggleModal);
 
   modal.addEventListener('click', (e) => {
     if (e.target.id === 'modal') { // id='modal' is the overlay, not the form itself
