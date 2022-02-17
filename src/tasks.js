@@ -30,12 +30,6 @@ const tasks = (() => {
         let offset = date.getTimezoneOffset() * 60 * 1000;
         return format(date.valueOf() + offset, 'P');
       },
-      get dueDateYYYYMMDD() {
-        if (taskDueDate === '') return '';
-        let date = new Date(taskDueDate);
-        let offset = date.getTimezoneOffset() * 60 * 1000;
-        return format(date.valueOf() + offset, 'yyyy-MM-dd');
-      },
       get modifiedDateString() {
         return format(taskModifiedDate, 'Pp');
       },

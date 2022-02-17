@@ -24,3 +24,9 @@
 .task-btns {
   @apply flex items-start space-x-1 text-gray-500;
 }
+
+.required:after{
+  content:"*";
+  color: #ff0000;
+  /* font-weight:bold; */
+}

@@ -58,9 +58,7 @@ const staticHandlers = (() => {
     e.preventDefault();
     let titleValue = titleField.value,
         detailsValue = detailsField.value,
-        dueDateValue = dueDateField.value === '' ?
-            dueDateField.value :
-            new Date(dueDateField.value),
+        dueDateValue = dueDateField.value,
         starredValue = starredField.checked;
     tasks.addNewTask(titleValue, detailsValue, dueDateValue, starredValue);
     toggleModal();
@@ -81,7 +79,7 @@ const staticHandlers = (() => {
 
     titleField.value = currentTask.title;
     detailsField.value = currentTask.details;
-    dueDateField.value = currentTask.dueDateYYYYMMDD;
+    dueDateField.value = currentTask.dueDate;
     starredField.checked = currentTask.isStarred;
 
     form.addEventListener('submit', submitEdits, {once:true});
