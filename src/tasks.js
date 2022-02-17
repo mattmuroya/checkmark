@@ -10,7 +10,7 @@ const tasks = (() => {
         taskStarred = starred,
         taskTags = tags;
 
-    let completed = false;
+    let taskCompleted = false;
     let taskModifiedDate = new Date();
 
     return {
@@ -36,6 +36,9 @@ const tasks = (() => {
       get isStarred() {
         return taskStarred; // boolean
       },
+      get isCompleted() {
+        return taskCompleted; // boolean
+      },
       // setters/mutators
       set title(value) {
         taskTitle = value;
@@ -54,7 +57,10 @@ const tasks = (() => {
       },
       toggleStarred() {
         taskStarred = !taskStarred;
-      }
+      },
+      toggleCompleted() {
+        taskCompleted = !taskCompleted;
+      },
     }
   }
   
