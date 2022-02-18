@@ -2,16 +2,13 @@ import { format } from "date-fns";
 
 const tasks = (() => {
   
-  function createTask(title, details, dueDate, starred, tags) {
+  function createTask(title, details, dueDate, starred, completed) {
 
     let taskTitle = title,
         taskDetails = details,
         taskDueDate = dueDate,
         taskStarred = starred,
-        taskTags = tags;
-
-    let taskCompleted = false;
-    let taskModifiedDate = new Date();
+        taskCompleted = completed;
 
     return {
       // getters/accessors
@@ -34,12 +31,6 @@ const tasks = (() => {
         if (taskDueDate === '') return 8640000000000000; // maximum date integer
         return Date.parse(taskDueDate);
       },
-      get modifiedDateString() {
-        return format(taskModifiedDate, 'Pp');
-      },
-      get modifiedDateParsed() {
-        return taskModifiedDate;
-      },
       get isStarred() {
         return taskStarred; // boolean
       },
@@ -56,9 +47,6 @@ const tasks = (() => {
       set dueDate(value) {
         taskDueDate = value;
       },
-      set modifiedDate(value) {
-        taskModifiedDate = value;
-      },
       set isStarred(value) {
         taskStarred = value;
       },
@@ -73,8 +61,9 @@ const tasks = (() => {
   
   const taskList = [];
 
-  function addNewTask(title, details, dueDate, starred, tags) {
-    taskList.unshift(createTask(title, details, dueDate, starred, tags));
+  function addNewTask(title, details, dueDate, starred, completed) {
+    let newTaskCompleted = completed ? completed : false;
+    taskList.unshift(createTask(title, details, dueDate, starred, newTaskCompleted));
   }
 
   function deleteTask(index) {

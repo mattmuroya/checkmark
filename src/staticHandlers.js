@@ -1,5 +1,6 @@
 import dynamicHandlers from "./dynamicHandlers";
 import navHandlers from "./navHandlers";
+import storage from "./storage";
 import tasks from "./tasks";
 
 const staticHandlers = (() => {
@@ -72,9 +73,6 @@ const staticHandlers = (() => {
           case 'due':
             sortByDueDate(tasks.taskList);
             break;
-          case 'modified':
-            sortByLastModified(tasks.taskList);
-            break;
           case 'completed':
             // sortByTitle(myLibrary);
             break;
@@ -103,24 +101,7 @@ const staticHandlers = (() => {
           }
         });
       }
-
-      function sortByLastModified(list) {
-        list.sort((a, b) => {
-          if (a.modifiedDateParsed > b.modifiedDateParsed) {
-            return -1;
-          } else if (b.modifiedDateParsed > a.modifiedDateParsed) {
-            return 1;
-          } else { // if equal, sort by title
-            if (a.title.toLowerCase() > b.title.toLowerCase()) {
-              return 1;
-            } else {
-              return -1;
-            }
-          }
-        });
-      }
       
-
   // handle new submissions
 
   const form = document.getElementById('form');
@@ -135,7 +116,8 @@ const staticHandlers = (() => {
         detailsValue = detailsField.value,
         dueDateValue = dueDateField.value,
         starredValue = starredField.checked;
-    tasks.addNewTask(titleValue, detailsValue, dueDateValue, starredValue);
+    tasks.addNewTask(titleValue, detailsValue, dueDateValue, starredValue, false, new Date());
+    storage.updateLocalStorage();
     toggleModal();
     updateTasksToDisplay();
   }
@@ -165,8 +147,8 @@ const staticHandlers = (() => {
       currentTask.details = detailsField.value;
       currentTask.dueDate = dueDateField.value;
       currentTask.isStarred = starredField.checked;
-      currentTask.modifiedDate = new Date();
   
+      storage.updateLocalStorage();
       toggleModal();
       updateTasksToDisplay();
     }

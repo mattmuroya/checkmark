@@ -1,6 +1,7 @@
 import tasks from './tasks';
 import staticHandlers from './staticHandlers';
 import navHandlers from './navHandlers';
+import storage from './storage';
 
 const dynamicHandlers = (() => {
 
@@ -57,7 +58,6 @@ const dynamicHandlers = (() => {
           </div>
           <div id="task-sub-${i}" class="task-sub">
             <p id="task-due-date-${i}" class="task-due-date"></p>
-            <p id="task-mod-date-${i}"></p>
           </div>
         </div>
       </div>`;
@@ -67,12 +67,11 @@ const dynamicHandlers = (() => {
     let details = document.createTextNode(task.details);
     let title = document.createTextNode(task.title);
     let dueDate = document.createTextNode('Due Date: ' + task.dueDateString);
-    let modifiedDate = document.createTextNode('Last Modified: ' + task.modifiedDateString);
+
 
     document.getElementById(`task-details-${i}`).appendChild(details);
     document.getElementById(`task-title-${i}`).appendChild(title);
     document.getElementById(`task-due-date-${i}`).appendChild(dueDate);
-    document.getElementById(`task-mod-date-${i}`).appendChild(modifiedDate);
     
     if (task.isStarred) {
       changeStarColor(document.getElementById(`star-icon-${i}`));
@@ -86,6 +85,7 @@ const dynamicHandlers = (() => {
 
     document.getElementById(`delete-task-btn-${i}`).addEventListener('click', () => {
       tasks.deleteTask(i);
+      storage.updateLocalStorage();
       redrawTasks(navHandlers.tasksToDisplay);
     });
 
@@ -96,12 +96,14 @@ const dynamicHandlers = (() => {
     document.getElementById(`star-task-btn-${i}`).addEventListener('click', () => {
       task.toggleStarred();
       changeStarColor(document.getElementById(`star-icon-${i}`));
+      storage.updateLocalStorage();
     });
 
     document.getElementById(`checkmark-btn-${i}`).addEventListener('click', () => {
       task.toggleCompleted();
       changeCheckmarkColor(document.getElementById(`unchecked-icon-${i}`), document.getElementById(`checked-icon-${i}`));
       toggleStrikethrough(document.getElementById(`task-item-${i}`));
+      storage.updateLocalStorage();
     });
   }
 
